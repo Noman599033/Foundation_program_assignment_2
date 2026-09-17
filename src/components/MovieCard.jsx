@@ -9,7 +9,7 @@ const MovieCard = ({ movie }) => {
 
   const year = movie.premiered ? movie.premiered.substring(0, 4) : "Unknown";
 
-  const summary = movie.summary ? movie.summary.replace(/<[^>]+>/g, '') : "No description available.";
+  const summary = movie.summary ?? "No description available.";
   const genres = movie.genres && movie.genres.length > 0 ? movie.genres.join(", ") : "N/A";
 
   return (
@@ -29,7 +29,6 @@ const MovieCard = ({ movie }) => {
             <span className="flex items-center gap-1">
               <i className="fa-solid fa-star text-yellow-400"></i> {rating}
             </span>
-            <i className="fa-solid fa-circle text-[8px] text-gray-600"></i>
             <span className="flex items-center gap-1">
               <i className="fa-regular fa-calendar"></i> {year}
             </span>
@@ -72,9 +71,12 @@ const MovieCard = ({ movie }) => {
               </div>
 
               <h4 className="font-bold text-lg mb-2 text-yellow-400">Overview:</h4>
-              <p className="text-gray-300 mb-8 max-h-[150px] overflow-y-auto pr-2">
-                {summary}
-              </p>
+              <div
+                ref={(el) => {
+                  if (el) el.innerHTML = `${summary}`;
+                }}
+                className="text-gray-300 mb-8 max-h-[150px] overflow-y-auto pr-2"
+              />
 
               <div className="flex justify-end mt-auto">
                 <button
