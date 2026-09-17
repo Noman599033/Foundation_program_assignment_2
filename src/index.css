@@ -4,8 +4,7 @@
     background-position: center;
     height: 500px;
     background-repeat: no-repeat;
-   background-image: linear-gradient(rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0.6)), url('./assets/banner-image.jpeg');
+    background-image: linear-gradient(to top, rgba(17, 24, 39, 1), rgba(17, 24, 39, 0.4)), url('./assets/banner-image.jpeg');
     background-size: cover;
-     width: 100%;
-     opacity: 50%;
+    width: 100%;
 }
